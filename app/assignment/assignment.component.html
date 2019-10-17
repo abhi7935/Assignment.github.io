@@ -1,0 +1,136 @@
+
+<div class="row" style="text-align: center ; background-color:dodgerblue" class="searchbar" >
+    <div class="container-fluid col-md-12">
+        <div class="col-xs-4 leftmargin">
+            <input type="text" id="mobno" class="form-control searchfield" placeholder="Search Mobile Number" [(ngModel)]="searchh"
+             minlength="10" maxlength="10" >
+             
+             
+        </div>
+
+        <div class="col-xs-1 searchbtn">
+            <button id="search" class="btn btn-white glyphicon glyphicon-search searchbutton" (click)="search()"></button>
+         </div>
+
+    </div>
+</div>
+
+<div class="col-md-12">
+    
+        <div *ngIf="show" >
+                <table class=" table table-striped tableshow">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Mobile No.</th>
+                                              
+                    </tr>
+                    </thead>
+                    <tr *ngFor="let Abc of abc">
+                        
+                        <td>{{Abc.username}}</td>
+                        <td>{{Abc.email}}</td>
+                        <td>{{Abc.mobile}}</td>
+                                              
+                    </tr>
+                </table>
+                
+    
+    </div>
+        
+    <div *ngIf="hide" class="datamsg">      
+        <p>Mobile number does not present in the list ...!! </p>
+        <button class="btn Addbtn" (click)="showform()">Add data</button>
+    </div>
+
+    <div *ngIf="start" class="datamsg">
+        <p>No data Found.Please add data..!!</p>
+        <button class="btn  Addbtn" (click)="showform()">Add data</button>
+    </div>
+</div>
+
+
+<div class="container col-md-4 information">
+<div *ngIf="showfor">
+    <div class="form-group">    
+        <div class="col-md-8">
+        <input type="text" id="username" class="form-control input" [(ngModel)]="new.username" placeholder="Enter Username" #username="ngModel" minlength="5" required>
+        <div style="color:red" *ngIf="!username?.valid && (username?.touched )">
+                <div [hidden]="!username.errors">
+                    Enter Username
+                </div>
+
+                <div [hidden]="!username.errors.minlength">
+                        Username Must Have Minimum Length     {{username.errors.minlength?.requiredLength}}
+                    </div>
+            
+            </div>    
+    </div>
+        
+                
+        </div>
+<div class="form-group">
+        <div class="col-md-8">
+        <input type="email" id="pname" class="form-control input" [(ngModel)]="new.email" placeholder="Enter Email" #email="ngModel"required>
+
+        <div style="color:red" *ngIf="!email?.valid && (email?.touched )">
+                <div [hidden]="!email.errors">
+                    Enter email
+                </div>
+            
+            </div> 
+       </div> 
+</div>
+
+<div class="form-group">
+       <div class="col-md-8"> 
+       <input type="text" class="form-control input" [(ngModel)]="new.mobile" placeholder="Enter Mobile Number" minlength="10" maxlength="10" #mobile="ngModel" required>
+       <div style="color:red" *ngIf="!mobile?.valid && (mobile?.touched )">
+            <div [hidden]="!mobile.errors">
+                Enter mobile number
+            </div>
+
+            <div [hidden]="!mobile.errors.minlength">
+                    Mobile Number Must Have Minimum Length    {{mobile.errors.minlength?.requiredLength}}
+                </div>
+          
+    
+    
+    
+    
+    </div>
+       </div>
+    
+       <div class="form-group">
+           <div class="col-md-8">
+       <button class="btn submitbtn" (click)="Submit()" [disabled]="!username .valid">Submit</button>
+        </div>    
+        </div> 
+</div>
+</div>
+
+
+
+         
+
+<!-- <table class=" table table-striped tableshow">
+        <thead class="thead-light">
+             <tr>
+                 
+                 <th>UserName</th> 
+                 <th>Email</th>
+                 <th>Mobile No.</th>
+                                 
+             </tr>
+             </thead>
+             <tr *ngFor="let Products of product">
+                 
+                 <td>{{Products.username}}</td>
+                 <td>{{Products.email}}</td>
+                 <td>{{Products.mobile}}</td>
+                                 
+             </tr>
+         </table> 
+         
+          -->
